@@ -61,11 +61,75 @@ export default function AssignWork() {
 }
 
 const styles = StyleSheet.create({
-  container: { flexGrow: 1, paddingHorizontal: 20, paddingTop: 30, backgroundColor: '#f9f9f9' },
-  title: { fontSize: 22, fontWeight: '700', marginBottom: 12, textAlign: 'center' },
-  empty: { textAlign: 'center', color: '#666', marginTop: 30 },
-  card: { backgroundColor: '#fff', padding: 12, borderRadius: 8, marginBottom: 12, borderWidth: 1, borderColor: '#ddd' },
-  cardTitle: { fontWeight: '700', fontSize: 16, marginBottom: 6 },
-  cardDesc: { fontSize: 14, color: '#555' },
-  cardStatus: { marginTop: 6, fontWeight: '600' },
+  container: {
+    flexGrow: 1,
+    paddingHorizontal: 20,
+    paddingTop: 30,
+    paddingBottom: 40,
+    backgroundColor: '#f8fafc',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: '700',
+    marginBottom: 18,
+    textAlign: 'center',
+    color: '#0f172a',
+  },
+  empty: {
+    textAlign: 'center',
+    color: '#64748b',
+    marginTop: 40,
+    fontSize: 16,
+  },
+  card: {
+    backgroundColor: '#fff',
+    padding: 16,
+    borderRadius: 14,
+    marginBottom: 14,
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  cardTitle: {
+    fontWeight: '700',
+    fontSize: 16,
+    marginBottom: 4,
+    color: '#1e293b',
+  },
+  cardDesc: {
+    fontSize: 14,
+    color: '#475569',
+    marginBottom: 6,
+  },
+  cardStatus: {
+    marginTop: 6,
+    fontWeight: '600',
+    color: '#334155',
+  },
+  statusAccepted: {
+    color: '#22c55e',
+  },
+  statusAssigned: {
+    color: '#3b82f6',
+  },
+  assignedText: {
+    marginTop: 6,
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#0f172a',
+  },
+  assignLabel: {
+    marginTop: 10,
+    marginBottom: 6,
+    fontWeight: '600',
+    color: '#1e293b',
+  },
+  actionRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 12,
+  },
 });

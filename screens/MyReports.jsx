@@ -9,21 +9,40 @@ export default function MyReports({ navigation }) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>My Reports</Text>
+      <Text style={styles.title}>📑 My Reports</Text>
+
       {reports.length === 0 ? (
-        <Text style={{ textAlign: 'center', color: '#666', marginTop: 30 }}>No reports yet.</Text>
+        <Text style={styles.emptyText}>No reports yet.</Text>
       ) : (
         reports.map((item, i) => (
           <View key={item.id || i} style={styles.reportCard}>
-            <Text style={{ fontWeight: 'bold' }}>{item.title}</Text>
-            <Text>{item.description}</Text>
-            {item.image && (
-              <Image source={{ uri: item.image }} style={{ width: 100, height: 80, borderRadius: 8, marginTop: 5 }} />
-            )}
-            <Text>Status: {item.status}</Text>
-            <Text>Upvotes: {item.upvotes}</Text>
-            <View style={{ marginTop: 8 }}>
-              <CustomButton title="Upvote" color="#FF9500" onPress={() => upvoteReport(i)} />
+            <View style={styles.row}>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.reportTitle}>{item.title}</Text>
+                <Text style={styles.reportDescription}>{item.description}</Text>
+              </View>
+
+              {item.image && (
+                <Image
+                  source={{ uri: item.image }}
+                  style={styles.thumbnail}
+                />
+              )}
+            </View>
+
+            <View style={styles.metaRow}>
+              <Text style={styles.metaText}>
+                📌 Status: <Text style={styles.status}>{item.status}</Text>
+              </Text>
+              <Text style={styles.metaText}>👍 {item.upvotes}</Text>
+            </View>
+
+            <View style={styles.buttonWrapper}>
+              <CustomButton
+                title="⬆ Upvote"
+                color="#f59e0b"
+                onPress={() => upvoteReport(i)}
+              />
             </View>
           </View>
         ))
@@ -33,7 +52,75 @@ export default function MyReports({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flexGrow: 1, paddingHorizontal: 20, paddingTop: 36, paddingBottom: 40, backgroundColor: '#F0F4F8' },
-  title: { fontSize: 22, marginBottom: 16, fontWeight: '700', textAlign: 'center' },
-  reportCard: { backgroundColor: '#fff', padding: 12, marginVertical: 8, borderRadius: 10, borderWidth: 1, borderColor: '#E5E7EB' },
+  container: {
+    flexGrow: 1,
+    paddingHorizontal: 20,
+    paddingTop: 36,
+    paddingBottom: 40,
+    backgroundColor: '#f8fafc',
+  },
+  title: {
+    fontSize: 24,
+    marginBottom: 20,
+    fontWeight: '700',
+    textAlign: 'center',
+    color: '#0f172a',
+  },
+  emptyText: {
+    textAlign: 'center',
+    color: '#64748b',
+    marginTop: 40,
+    fontSize: 16,
+  },
+  reportCard: {
+    backgroundColor: '#fff',
+    padding: 16,
+    marginVertical: 10,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+  },
+  reportTitle: {
+    fontWeight: '700',
+    fontSize: 16,
+    color: '#1e293b',
+    marginBottom: 4,
+  },
+  reportDescription: {
+    fontSize: 14,
+    color: '#475569',
+    marginBottom: 6,
+  },
+  thumbnail: {
+    width: 90,
+    height: 70,
+    borderRadius: 8,
+    marginLeft: 10,
+  },
+  metaRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 6,
+    marginBottom: 10,
+  },
+  metaText: {
+    fontSize: 13,
+    color: '#334155',
+  },
+  status: {
+    fontWeight: '600',
+    color: '#0ea5e9',
+  },
+  buttonWrapper: {
+    marginTop: 6,
+  },
 });

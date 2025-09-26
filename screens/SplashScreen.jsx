@@ -1,45 +1,46 @@
 // screens/SplashScreen.jsx
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Image, Text, StyleSheet } from 'react-native';
 
 export default function SplashScreen({ navigation }) {
   useEffect(() => {
-    const t = setTimeout(() => {
+    const timer = setTimeout(() => {
       navigation.replace('Onboarding');
-    }, 2500);
-    return () => clearTimeout(t);
+    }, 2000);
+    return () => clearTimeout(timer);
   }, [navigation]);
 
   return (
-    <View style={styles.splashContainer}>
+    <View style={styles.container}>
       {/* Logo */}
       <Image
-        source={require('../assets/citysolvelogo.jpg')}
+        source={require('../assets/citisolve.png')}
         style={styles.logo}
+        resizeMode="contain"
       />
-      {/* Tagline */}
-      <Text style={styles.splashSubtitle}>Solving City Problems Together</Text>
+
+      {/* Sub Text */}
+      <Text style={styles.tagline}>Solving City Problems Together</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  splashContainer: {
+  container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   logo: {
-    width: 150,
-    height: 150,
-    resizeMode: 'contain',
-    marginBottom: 8,
+    width: 160,
+    height: 160,
+    marginBottom: 4, // ↓ reduced from 20 → brings tagline closer
   },
-  splashSubtitle: {
-    fontSize: 15,
-    color: '#374151',
-    marginTop: 0,
+  tagline: {
+    fontSize: 16,
+    color: '#666',
     textAlign: 'center',
+    marginTop: 0, // ensures it's close to logo
   },
 });

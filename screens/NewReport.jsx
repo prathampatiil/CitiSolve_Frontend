@@ -70,11 +70,9 @@ export default function NewReport({ navigation, route }) {
       return;
     }
     addReport({ title, description, image });
-    // clear
     setTitle('');
     setDescription('');
     setImage(null);
-    // go back to dashboard (drawer screen "Dashboard")
     navigation.navigate('Dashboard');
   };
 
@@ -85,7 +83,7 @@ export default function NewReport({ navigation, route }) {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 6, marginBottom: 14 }}
+        contentContainerStyle={{ paddingHorizontal: 6,marginTop:20, marginBottom: 2 }} // tighter gap
       >
         {CATEGORIES.map((c, i) => {
           const selected = c === title;
@@ -106,6 +104,7 @@ export default function NewReport({ navigation, route }) {
       <TextInput
         style={styles.input}
         placeholder="Title"
+        placeholderTextColor="#94a3b8"
         value={title}
         onChangeText={setTitle}
       />
@@ -120,34 +119,69 @@ export default function NewReport({ navigation, route }) {
 
       {image && <Image source={{ uri: image }} style={styles.imagePreview} />}
 
-      <CustomButton title="Pick Image from Gallery" onPress={pickImage} />
-      <CustomButton title="Take Photo" onPress={takePhoto} />
-      <CustomButton title="Submit Report" onPress={submitReport} color="#34C759" />
+      <CustomButton title="Pick Image from Gallery" onPress={pickImage} color="#0ea5e9" />
+      <CustomButton title="Take Photo" onPress={takePhoto} color="#6366f1" />
+      <CustomButton title="Submit Report" onPress={submitReport} color="#22c55e" />
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flexGrow: 1, paddingHorizontal: 18, paddingTop: 30, backgroundColor: '#f9f9f9' },
-  title: { fontSize: 22, fontWeight: '700', marginBottom: 16, textAlign: 'center' },
-  categoryButton: {
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    backgroundColor: '#eee',
-    borderRadius: 20,
-    marginRight: 8,
+  container: {
+    flexGrow: 1,
+    paddingHorizontal: 18,
+    paddingTop: 28,
+    paddingBottom: 40,
+    backgroundColor: '#f1f5f9',
   },
-  categoryButtonSelected: { backgroundColor: '#007AFF' },
-  categoryText: { color: '#333', fontSize: 13 },
-  categoryTextSelected: { color: '#fff', fontWeight: '700' },
+  title: {
+    fontSize: 24,
+    fontWeight: '700',
+    marginBottom: 4, // reduced from 8
+    textAlign: 'center',
+    color: '#0f172a',
+  },
+  categoryButton: {
+    height: 45, // slightly smaller
+    paddingHorizontal: 10,
+    backgroundColor: '#e2e8f0',
+    borderRadius: 14,
+    marginRight: 6,
+    justifyContent: 'center',
+  },
+  categoryButtonSelected: {
+    backgroundColor: '#0ea5e9',
+    shadowColor: '#000',
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  categoryText: {
+    color: '#334155',
+    fontSize: 11,
+    fontWeight: '500',
+  },
+  categoryTextSelected: {
+    color: '#fff',
+    fontWeight: '700',
+  },
   input: {
     width: '100%',
     backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 12,
+    borderRadius: 12,
+    padding: 14,
+    borderWidth: 1,
+    borderColor: '#cbd5e1',
+    marginBottom: 10, // slightly tighter
+    fontSize: 15,
+    color: '#0f172a',
+  },
+  imagePreview: {
+    width: '100%',
+    height: 180,
+    borderRadius: 12,
+    marginBottom: 16,
     borderWidth: 1,
     borderColor: '#e2e8f0',
-    marginBottom: 12,
   },
-  imagePreview: { width: '100%', height: 170, borderRadius: 10, marginBottom: 12 },
 });

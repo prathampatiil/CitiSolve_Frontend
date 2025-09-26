@@ -1,3 +1,4 @@
+// screens/UserAuth.jsx
 import React, { useState, useRef } from 'react';
 import {
   View,
@@ -9,6 +10,7 @@ import {
   Platform,
   Animated,
 } from 'react-native';
+import theme from '../theme'; // Import theme
 
 export default function UserAuth({ navigation }) {
   const [username, setUsername] = useState('');
@@ -23,7 +25,12 @@ export default function UserAuth({ navigation }) {
   };
 
   const handlePressOut = () => {
-    Animated.spring(scaleValue, { toValue: 1, friction: 3, tension: 40, useNativeDriver: true }).start();
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      friction: 3,
+      tension: 40,
+      useNativeDriver: true,
+    }).start();
   };
 
   const handleContinue = () => {
@@ -47,6 +54,7 @@ export default function UserAuth({ navigation }) {
         value={username}
         onChangeText={setUsername}
         autoCapitalize="none"
+        placeholderTextColor={theme.colors.textLight}
       />
       <TextInput
         style={styles.input}
@@ -54,6 +62,7 @@ export default function UserAuth({ navigation }) {
         value={password}
         onChangeText={setPassword}
         secureTextEntry
+        placeholderTextColor={theme.colors.textLight}
       />
       <TextInput
         style={styles.input}
@@ -61,9 +70,10 @@ export default function UserAuth({ navigation }) {
         value={mobile}
         onChangeText={setMobile}
         keyboardType="phone-pad"
+        placeholderTextColor={theme.colors.textLight}
       />
 
-      <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+      <Animated.View style={{ transform: [{ scale: scaleValue }], width: '100%' }}>
         <TouchableOpacity
           style={styles.button}
           onPress={handleContinue}
@@ -80,44 +90,44 @@ export default function UserAuth({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 25,
+    padding: theme.spacing.lg,
     justifyContent: 'center',
-    backgroundColor: '#f2f6fc', // soft light background
+    backgroundColor: theme.colors.background,
   },
   title: {
     fontSize: 26,
-    fontWeight: '800',
+    fontWeight: '750',
     textAlign: 'center',
-    marginBottom: 25,
-    color: '#1E1E1E',
+    marginBottom: theme.spacing.lg,
+    color: theme.colors.textDark,
   },
   input: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 14,
-    marginBottom: 15,
+    backgroundColor: theme.colors.white,
+    borderRadius: theme.radius.md,
+    padding: theme.spacing.md,
+    marginBottom: theme.spacing.md,
     fontSize: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    elevation: 3, // Android shadow
+    elevation: 3,
   },
   button: {
-    backgroundColor: '#4e9bde',
-    padding: 16,
-    borderRadius: 12,
+    backgroundColor: theme.colors.primary,
+    padding: theme.spacing.md,
+    borderRadius: theme.radius.md,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.2,
     shadowRadius: 5,
     elevation: 6,
-    marginTop: 10,
+    marginTop: theme.spacing.sm,
   },
   buttonText: {
-    color: '#fff',
-    fontWeight: '700',
+    color: theme.colors.white,
+    fontWeight: '600',
     fontSize: 18,
   },
 });

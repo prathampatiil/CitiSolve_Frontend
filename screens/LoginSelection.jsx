@@ -1,16 +1,32 @@
+// screens/LoginSelection.jsx
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import CustomButton from '../components/CustomButton';
+import theme from '../theme'; // import theme
 
 export default function LoginSelection({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to UrbanEye</Text>
-      <Text style={{ textAlign: 'center', marginBottom: 20 }}>
+      <Text style={styles.title}>Welcome to CitiSolve</Text>
+      <Text style={styles.subtitle}>
         Please choose how you want to log in.
       </Text>
-      <CustomButton title="User Login" onPress={() => navigation.navigate('UserAuth')} />
-      <CustomButton title="Admin Login" color="#FF9500" onPress={() => navigation.navigate('AdminAuth')} />
+
+      <View style={styles.buttonWrapper}>
+        <CustomButton
+          title="User Login"
+          color={theme.colors.primary}
+          onPress={() => navigation.navigate('UserAuth')}
+        />
+      </View>
+
+      <View style={styles.buttonWrapper}>
+        <CustomButton
+          title="Admin Login"
+          color={theme.colors.secondary}
+          onPress={() => navigation.navigate('AdminAuth')}
+        />
+      </View>
     </View>
   );
 }
@@ -18,37 +34,27 @@ export default function LoginSelection({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f2f5f7',
-    paddingHorizontal: 20,
+    backgroundColor: theme.colors.background,
+    paddingHorizontal: theme.spacing.lg,
     justifyContent: 'center',
     alignItems: 'center',
   },
   title: {
     fontSize: 28,
     fontWeight: '700',
-    color: '#1E1E1E',
-    marginBottom: 10,
+    color: theme.colors.textDark,
+    marginBottom: theme.spacing.sm,
     textAlign: 'center',
   },
   subtitle: {
     fontSize: 16,
-    color: '#555',
+    color: theme.colors.textLight,
     textAlign: 'center',
-    marginBottom: 30,
+    marginBottom: theme.spacing.xl,
+    lineHeight: 22,
   },
-  button: {
-    width: '90%',
-    paddingVertical: 14,
-    borderRadius: 12,
-    marginVertical: 10,
-    backgroundColor: '#007AFF',
-    shadowColor: '#000',
-    shadowOffset: { width: 1, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4.65,
-    elevation: 8,
-  },
-  adminButton: {
-    backgroundColor: '#e2ad63ff',
+  buttonWrapper: {
+    width: '100%',
+    marginVertical: theme.spacing.sm,
   },
 });

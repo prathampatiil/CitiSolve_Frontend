@@ -1,9 +1,11 @@
 // App.js
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { ReportProvider } from './context/ReportContext';
+import theme from './theme';
 
 // Screens
 import SplashScreen from './screens/SplashScreen';
@@ -18,11 +20,24 @@ import AdminDrawer from './navigation/AdminDrawer';
 
 const Stack = createNativeStackNavigator();
 
+// Custom Navigation Theme (aligns with theme.jsx)
+const navTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: theme.colors.background,
+  },
+};
+
 export default function App() {
   return (
     <ReportProvider>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <NavigationContainer theme={navTheme}>
+        <StatusBar barStyle="dark-content" backgroundColor={theme.colors.background} />
+        <Stack.Navigator
+          screenOptions={{ headerShown: false }}
+          initialRouteName="Splash"
+        >
           {/* Splash & Onboarding */}
           <Stack.Screen name="Splash" component={SplashScreen} />
           <Stack.Screen name="Onboarding" component={Onboarding} />

@@ -1,42 +1,27 @@
-// theme.js
+// theme.jsx
 const theme = {
   colors: {
-    primary: '#FF7A00',      // CitiSolve orange (main accent)
-    accent: '#4E9BDE',       // blue secondary
-    success: '#34C759',
-    danger: '#FF3B30',
-    background: '#F3F6F9',   // app background
-    card: '#FFFFFF',
-    muted: '#9CA3AF',        // gray for secondary text
-    text: '#111827',         // main text
-    white: '#FFFFFF',
+    primary: '#007AFF',       // iOS blue accent
+    secondary: '#00C6AE',     // teal accent
+    background: '#F9FAFB',    // light grey background
+    card: '#FFFFFF',          // white card backgrounds
+    textDark: '#1F2937',      // dark text
+    textLight: '#6B7280',     // lighter text
+    border: '#E5E7EB',        // subtle border grey
+    danger: '#EF4444',        // red/danger
+    success: '#10B981',       // green/success
   },
   spacing: {
-    xs: 6,
-    sm: 10,
+    xs: 4,
+    sm: 8,
     md: 16,
     lg: 24,
-    xl: 36,
+    xl: 32,
   },
   radius: {
-    sm: 8,
-    md: 12,
+    sm: 6,
+    md: 10,
     lg: 16,
-  },
-  fontSize: {
-    h1: 26,
-    h2: 20,
-    body: 16,
-    small: 13,
-  },
-  shadow: {
-    subtle: {
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.08,
-      shadowRadius: 4,
-      elevation: 3,
-    },
   },
 };
 

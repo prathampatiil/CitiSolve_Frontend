@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import theme from '../theme'; // import your theme
 
 export default function AdminAuth({ navigation }) {
   const [username, setUsername] = useState('');
@@ -33,12 +34,14 @@ export default function AdminAuth({ navigation }) {
       <TextInput
         style={styles.input}
         placeholder="Username"
+        placeholderTextColor={theme.colors.textLight}
         value={username}
         onChangeText={setUsername}
       />
       <TextInput
         style={styles.input}
         placeholder="Mobile Number"
+        placeholderTextColor={theme.colors.textLight}
         value={mobile}
         onChangeText={setMobile}
         keyboardType="phone-pad"
@@ -46,6 +49,7 @@ export default function AdminAuth({ navigation }) {
       <TextInput
         style={styles.input}
         placeholder="Password"
+        placeholderTextColor={theme.colors.textLight}
         value={password}
         onChangeText={setPassword}
         secureTextEntry
@@ -61,51 +65,46 @@ export default function AdminAuth({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: theme.spacing.lg,
     justifyContent: 'center',
-    backgroundColor: '#F0F4F8',
+    backgroundColor: theme.colors.background,
   },
   title: {
     fontSize: 26,
-    fontWeight: '800',
+    fontWeight: '750',
     textAlign: 'center',
-    marginBottom: 30,
-    color: '#1C1C1E',
-    textShadowColor: 'rgba(0,0,0,0.05)',
-    textShadowOffset: {width: 0, height: 1},
-    textShadowRadius: 2,
+    marginBottom: theme.spacing.lg,
+    color: theme.colors.textDark,
   },
   input: {
-    borderWidth: 1,
-    borderColor: '#D1D5DB',
-    borderRadius: 12,
-    padding: 14,
-    marginBottom: 15,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
-    shadowOpacity: 0.05,
-    shadowOffset: {widht: 0, height: 2},
-    shadowRadius: 4,
-    elevation: 2,
+    backgroundColor: theme.colors.white,
+    borderRadius: theme.radius.md,
+    padding: theme.spacing.md,
+    marginBottom: theme.spacing.md,
     fontSize: 16,
-    color: '#111',
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 3 },
+    shadowRadius: 4,
+    elevation: 3,
+    color: theme.colors.textDark,
   },
   button: {
-    backgroundColor: '#007AFF',
-    paddingVertical: 16,
-    paddingHorizontal: 20,
-    borderRadius: 12,
+    backgroundColor: theme.colors.primary,
+    paddingVertical: theme.spacing.md,
+    paddingHorizontal: theme.spacing.lg,
+    borderRadius: theme.radius.md,
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: theme.spacing.sm,
     shadowColor: '#000',
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 4 },
     shadowRadius: 6,
     elevation: 4,
   },
   buttonText: {
-    color: '#fff',
-    fontWeight: '700',
+    color: theme.colors.white,
+    fontWeight: '600',
     fontSize: 18,
   },
 });
